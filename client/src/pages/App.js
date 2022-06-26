@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
+import api from "../api/api";
 import config from '../config.json'
 import TermsOfUse from "../components/TermsOfUse";
 import Agenda from "../components/Agenda";
@@ -43,7 +44,7 @@ function App() {
   function checkTermsOfUser(user) {
     api.get("get_all", { params: { user: user?.email, kind: "TermsOfUse" } })
       .then((res) => {
-        if(res.data.length > 0){
+        if (res.data.length > 0) {
           setTermsOfUseAccepted(true)
         }
       })
@@ -54,12 +55,11 @@ function App() {
 
   return (
     <div className="App">
-      {user && !termsOfUseAccepted ? 
-        <TermsOfUse termsAccepted={termsAccepted} />
-      : undefined}
-      {user && termsOfUseAccepted?
-        < Agenda user={user} />
-      :undefined}
+      {user ?
+        <div>
+          {termsOfUseAccepted ? < Agenda user={user} /> : <TermsOfUse termsAccepted={termsAccepted} />}
+        </div>
+        : undefined}
     </div>
   );
 }
