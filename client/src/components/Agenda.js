@@ -15,10 +15,6 @@ const COLORS = {
   "color-4": "rgba(70, 159, 213, 1)",
   "color-5": "rgba(170, 59, 123, 1)",
 };
-
-// TODO:
-// 1- Verificar questão do id e _id, no front tem que ser tudo _id no back tudo id
-
 export default class Agenda extends Component {
   constructor(props) {
     super(props);
