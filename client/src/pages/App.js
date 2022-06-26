@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import api from '../api/api'
 import config from '../config.json'
 import TermsOfUse from "../components/TermsOfUse";
 import Agenda from "../components/Agenda";
@@ -22,7 +21,6 @@ function App() {
   const [termsOfUseAccepted, setTermsOfUseAccepted] = useState(false);
 
   useEffect(() => {
-
     onAuthStateChanged(auth, user => {
 
       if (user != null) {

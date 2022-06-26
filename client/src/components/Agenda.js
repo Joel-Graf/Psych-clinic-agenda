@@ -52,8 +52,7 @@ export default class Agenda extends Component {
   }
 
   refreshPatients() {
-    api
-      .get("get_all", {
+    api.get("get_all", {
         params: { user: this.props.user?.email, kind: "Patient" },
       })
       .then((res) => {
@@ -71,8 +70,7 @@ export default class Agenda extends Component {
   }
 
   refreshAppointments() {
-    api
-      .get("get_all", {
+    api.get("get_all", {
         params: { user: this.props.user?.email, kind: "Agendamentos" },
       })
       .then((res) => {
@@ -145,20 +143,35 @@ export default class Agenda extends Component {
   }
 
   handleItemChange(items, item) {
-    this.setState({ items: items });
+    item.id = item._id;
+    delete item._id;
+    item.patientId = this.state.selectedPatientId;
+
+    api.post("upcreate", {user: this.props?.user?.email, kind: "Agendamentos", params: item })
+      .then((resp) => {
+        this.refreshAppointments();
+      })
+      .catch((err) => {
+        alert("DEU ZIKA BOY");
+      });
   }
 
   handleItemSize(items, item) {
-    this.setState({ items: items });
+    item.id = item._id;
+    delete item._id;
+    item.patientId = this.state.selectedPatientId;
+    
+    api.post("upcreate", {user: this.props?.user?.email, kind: "Agendamentos", params: item })
+      .then((resp) => {
+        this.refreshAppointments();
+      })
+      .catch((err) => {
+        alert("DEU ZIKA BOY");
+      });
   }
 
   removeEvent(items, item) {
-    api
-      .post("delete", {
-        user: this.props?.user?.email,
-        kind: "Agendamentos",
-        id: item._id,
-      })
+    api.post("delete", { user: this.props?.user?.email, kind: "Agendamentos", id: item._id})
       .then((res) => {
         this.refreshAppointments();
       })
@@ -170,12 +183,7 @@ export default class Agenda extends Component {
   addNewEvent(items, item) {
     delete item._id;
     item.patientId = this.state.selectedPatientId;
-    api
-      .post("upcreate", {
-        user: this.props?.user?.email,
-        kind: "Agendamentos",
-        params: item,
-      })
+    api.post("upcreate", {user: this.props?.user?.email, kind: "Agendamentos", params: item })
       .then((resp) => {
         this.refreshAppointments();
       })
@@ -189,12 +197,7 @@ export default class Agenda extends Component {
     item.id = item._id;
     delete item._id;
     item.patientId = this.state.selectedPatientId;
-    api
-      .post("upcreate", {
-        user: this.props?.user?.email,
-        kind: "Agendamentos",
-        params: item,
-      })
+    api.post("upcreate", { user: this.props?.user?.email, kind: "Agendamentos",params: item})
       .then((resp) => {
         this.refreshAppointments();
       })
