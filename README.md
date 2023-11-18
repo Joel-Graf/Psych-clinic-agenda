@@ -4,3 +4,5 @@ Funcionalidades do sistema:<br>
 - Agendamento de pacientes<br>
 - Cadastro de pacientes<br>
 - Termos de uso<br> 
+## Análise do fluxo e protótipo do sistema
+(Whimsical)[https://whimsical.com/psidevelicos-LHbowiqtCp737EWkiBeCcf]
