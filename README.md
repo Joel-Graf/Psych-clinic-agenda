@@ -5,4 +5,4 @@ Funcionalidades do sistema:<br>
 - Cadastro de pacientes<br>
 - Termos de uso<br> 
 ## Análise do fluxo e protótipo do sistema
-(Whimsical)[https://whimsical.com/psidevelicos-LHbowiqtCp737EWkiBeCcf]
+https://whimsical.com/psidevelicos-LHbowiqtCp737EWkiBeCcf
